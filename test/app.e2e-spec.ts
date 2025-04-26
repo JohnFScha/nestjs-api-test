@@ -22,4 +22,19 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  it('/cats (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/cats')
+      .expect(200)
+      .expect('This action returns all cats');
+  });
+  
+  it('/cats (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/cats')
+      .send({ name: 'Tom' })
+      .expect(201)
+      .expect('This action adds a new cat');
+  });
 });
